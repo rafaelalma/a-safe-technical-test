@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Technical Test: React Developer with Next.js, TypeScript and Tailwind CSS
 
-## Getting Started
+Task 1: Authentication with Next.js
+● Secure routes using NextAuth.js for authentication.
 
-First, run the development server:
+Task 2: Component Development
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+UI Components
+● Create a UI Kit for the project.
+● Implement a theme system with multiple theme options.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Custom Hook
+● Create a custom hook for handling complex logic to be reused across the
+application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Task 3: Dashboard Generation
+● Develop a dashboard to show a summary of information.
+● This dashboard should include a graph, you can use libraries such as D3.js,
+Chart.js, etc.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Task 4: Large Data Set Handling
+● Using a set of at least 1000 records, create a view that allows efficient
+querying and data retrieval.
+● Implements an optimal way of displaying information to the user (for example
+using pagination).
 
-## Learn More
+Task 5: Performance Optimisation
+● Make the most of the Next.js 14 features by using server-side rendering,
+server-components and the streaming technique.
+● Optimize the application for mobile performance using Google Lighthouse
+metrics.
 
-To learn more about Next.js, take a look at the following resources:
+Task 6: Testing
+● Perform unit testing of the application with jest and/or with React Testing
+Library.
+● Perform E2E testing of the application with cypress.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Task 7: Documentation
+● Provide a detailed README with instructions, architecture overview, and any
+additional information.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Submission Guidelines:
+● Share the link to the Git repository containing your code.
+● Ensure that your app
