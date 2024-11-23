@@ -5,7 +5,7 @@ export default async function RecentInvoices() {
   const recentInvoices = await fetchRecentInvoices()
 
   return (
-    <div className="flex flex-col gap-4">
+    <section className="flex flex-col gap-4">
       <h2>Recent Invoices</h2>
       <ol className="grid grid-cols-1 sm:grid-cols-3 gap-6">
         {recentInvoices.map((recentInvoice) => (
@@ -38,6 +38,6 @@ export default async function RecentInvoices() {
           </li>
         ))}
       </ol>
-    </div>
+    </section>
   )
 }

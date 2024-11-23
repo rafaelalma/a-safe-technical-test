@@ -13,7 +13,9 @@ export default function RootLayout({
         <header>
           <TopNav />
         </header>
-        <main className="p-6 max-w-[1000px] m-auto">{children}</main>
+        <main className="p-6 max-w-[1000px] m-auto flex flex-col gap-6">
+          {children}
+        </main>
       </body>
     </html>
   )

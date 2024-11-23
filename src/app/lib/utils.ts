@@ -1,9 +1,11 @@
 export const formatCurrency = (amount: number) => {
-  return amount.toLocaleString('es-ES', {
+  const formattedCurrency = ((amount / 100) * 100).toLocaleString('es-ES', {
     style: 'currency',
     currency: 'EUR',
     maximumFractionDigits: 0,
   })
+
+  return formattedCurrency
 }
 
 export const capitalize = (word: string) => {
