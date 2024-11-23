@@ -3,10 +3,10 @@ import TopNav from './top-nav'
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div>
-      <div>
+      <header>
         <TopNav />
-      </div>
-      <div>{children}</div>
+      </header>
+      <main>{children}</main>
     </div>
   )
 }
