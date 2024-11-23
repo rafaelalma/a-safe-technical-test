@@ -25,6 +25,19 @@ export const InvoiceSchema = z.object({
   status: z.enum(['pending', 'paid']),
 })
 
+export type RecentInvoice = z.infer<typeof RecentInvoiceSchema>
+export type RecentInvoiceRaw = Omit<RecentInvoice, 'amount'> & {
+  amount: number
+}
+export const RecentInvoiceSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  amount: z.number(),
+  due_date: z.string(),
+  issued_date: z.string(),
+  status: z.enum(['pending', 'paid']),
+})
+
 export type MonthlyRevenue = z.infer<typeof MonthlyRevenueSchema>
 export const MonthlyRevenueSchema = z.object({
   month: z.string(),
