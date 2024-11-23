@@ -1,6 +1,7 @@
 import { db } from '@vercel/postgres'
 import { RecentInvoiceRaw } from './definitions'
-import { formatCurrency } from './utils'
+import { capitalize, formatCurrency } from './utils'
+import { format } from 'date-fns'
 
 const client = await db.connect()
 
@@ -11,11 +12,13 @@ export async function fetchRecentInvoices() {
         FROM invoices
         JOIN customers ON invoices.customer_id = customers.id
         ORDER BY invoices.issued_date DESC
-        LIMIT 5`
+        LIMIT 3`
 
     const recentInvoices = data.rows.map((invoice) => ({
       ...invoice,
       amount: formatCurrency(invoice.amount),
+      due_date: format(invoice.due_date, 'dd/MM/yy'),
+      status: capitalize(invoice.status),
     }))
     return recentInvoices
   } catch (error) {

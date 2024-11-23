@@ -9,12 +9,12 @@ type Link = {
   href: string
 }
 const links: ReadonlyArray<Link> = [
-  { name: 'Home', href: '/dashboard' },
+  { name: 'Dashboard', href: '/dashboard' },
   {
     name: 'Invoices',
-    href: '/dashboard/invoices',
+    href: '/invoices',
   },
-  { name: 'Customers', href: '/dashboard/customers' },
+  { name: 'Customers', href: '/customers' },
 ]
 
 export default function NavLinks() {
@@ -28,7 +28,7 @@ export default function NavLinks() {
             <Link
               href={link.href}
               className={clsx('p-2 block rounded-[var(--radius)]', {
-                'bg-[hsl(var(--accent))] text-[hsl(var(--foreground))]':
+                'bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))]':
                   pathname === link.href,
               })}
             >
