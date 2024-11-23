@@ -19,8 +19,8 @@ export type Invoice = z.infer<typeof InvoiceSchema>
 export const InvoiceSchema = z.object({
   id: z.string(),
   customer_id: z.string(),
-  issued_date: z.date(),
-  due_date: z.date(),
+  issued_date: z.string(),
+  due_date: z.string(),
   amount: z.number(),
   status: z.enum(['pending', 'paid']),
 })
@@ -37,8 +37,8 @@ export const RecentInvoiceSchema = z.object({
   id: z.string(),
   name: z.string(),
   amount: z.number(),
-  due_date: z.date(),
-  issued_date: z.date(),
+  due_date: z.string(),
+  issued_date: z.string(),
   status: z.enum(['pending', 'paid']),
 })
 
