@@ -1,9 +1,11 @@
 import { faker } from '@faker-js/faker'
 import { Customer, Invoice, MonthlyRevenue, User } from './definitions'
 
+faker.seed(777)
+
 const users: ReadonlyArray<User> = [
   {
-    id: 'rafaelalma',
+    id: '410544b2-4001-4271-9855-fec4b6a6442a',
     name: 'Rafael Álvarez',
     email: 'rafaelalma92@gmail.com',
     password: 'unsafe-password',
@@ -36,7 +38,7 @@ function createRandomInvoice(
     customer_id: customerId,
     issued_date: faker.date.past({ years: 5 }).toISOString(),
     due_date: faker.date.future({ years: 5 }).toISOString(),
-    amount: Number(faker.finance.amount({ min: 100 })),
+    amount: Number(faker.finance.amount({ min: 100, max: 1000, dec: 0 })),
     status,
   }
 }
@@ -50,7 +52,7 @@ const invoices: ReadonlyArray<Invoice> = Array.from({
 })
 
 function getRandomRevenue() {
-  return Number(faker.finance.amount({ min: 1000, max: 5000 }))
+  return Number(faker.finance.amount({ min: 1000, max: 5000, dec: 0 }))
 }
 const revenue: ReadonlyArray<MonthlyRevenue> = [
   { month: 'Jan', revenue: getRandomRevenue() },
