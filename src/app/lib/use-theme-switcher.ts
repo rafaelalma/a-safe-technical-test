@@ -39,6 +39,10 @@ const initialTheme: Theme = {
 }
 
 const retrieveTheme = (): Theme => {
+  if (typeof window === 'undefined') {
+    return initialTheme
+  }
+
   const localStorageTheme = window.localStorage.getItem(THEME_KEY)
 
   if (!localStorageTheme) {
@@ -53,5 +57,9 @@ const retrieveTheme = (): Theme => {
 }
 
 const saveTheme = (theme: Theme) => {
+  if (typeof window === 'undefined') {
+    return
+  }
+
   window.localStorage.setItem(THEME_KEY, JSON.stringify(theme))
 }
