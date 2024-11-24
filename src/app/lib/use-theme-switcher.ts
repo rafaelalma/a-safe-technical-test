@@ -5,7 +5,6 @@ export default function useThemeSwitcher() {
   // add class to html element
   useEffect(() => {
     const htmlElement = document.documentElement
-    htmlElement.setAttribute('class', 'dark')
-    // htmlElement.removeAttribute('class')
+    htmlElement.setAttribute('class', 'dark violet')
   }, [])
 }

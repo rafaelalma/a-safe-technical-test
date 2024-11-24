@@ -11,7 +11,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${lato.className} antialiased text-[hsl(var(--foreground))] bg-[hsl(var(--background))]`}
+        className={`${lato.className} antialiased text-foreground bg-background`}
       >
         <header>
           <TopNav />

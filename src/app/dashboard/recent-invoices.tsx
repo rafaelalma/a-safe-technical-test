@@ -11,25 +11,25 @@ export default async function RecentInvoices() {
         {recentInvoices.map((recentInvoice) => (
           <li
             key={recentInvoice.id}
-            className="border border-[hsl(var(--border))]"
+            className="border border-border rounded-md"
           >
             <article>
-              <p className="px-4 py-2 border-b border-[hsl(var(--border))]">
+              <p className="px-4 py-2 border-b border-border">
                 <strong>Client:</strong> {recentInvoice.name}
               </p>
-              <p className="px-4 py-2 border-b border-[hsl(var(--border))]">
+              <p className="px-4 py-2 border-b border-border">
                 <strong>Amount:</strong> {recentInvoice.amount}
               </p>
-              <p className="px-4 py-2 border-b border-[hsl(var(--border))]">
+              <p className="px-4 py-2 border-b border-border">
                 <strong>Due Date:</strong> {recentInvoice.due_date}
               </p>
-              <p className="px-4 py-2 border-b border-[hsl(var(--border))]">
+              <p className="px-4 py-2 border-b border-border">
                 <strong>Status:</strong> {recentInvoice.status}
               </p>
               <p className="px-4 py-2">
                 <Link
                   href={`/invoices/${recentInvoice.id}`}
-                  className="text-[hsl(var(--primary))]"
+                  className="text-primary"
                 >
                   View Invoice
                 </Link>

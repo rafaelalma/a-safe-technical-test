@@ -13,19 +13,10 @@ export default async function Overview() {
   return (
     <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       <Card
-        title="Total Customers"
-        value={numberOfCustomers}
-        link={
-          <Link href="/customers" className="text-[hsl(var(--primary))]">
-            View All
-          </Link>
-        }
-      />
-      <Card
         title="Total Invoices"
         value={numberOfInvoices}
         link={
-          <Link href="/invoices" className="text-[hsl(var(--primary))]">
+          <Link href="/invoices" className="text-primary">
             View All
           </Link>
         }
@@ -34,10 +25,7 @@ export default async function Overview() {
         title="Collected"
         value={totalPaidInvoices}
         link={
-          <Link
-            href="/invoices?status=paid"
-            className="text-[hsl(var(--primary))]"
-          >
+          <Link href="/invoices?status=paid" className="text-primary">
             View All
           </Link>
         }
@@ -46,10 +34,16 @@ export default async function Overview() {
         title="Pending"
         value={totalPendingInvoices}
         link={
-          <Link
-            href="/invoices?status=pending"
-            className="text-[hsl(var(--primary))]"
-          >
+          <Link href="/invoices?status=pending" className="text-primary">
+            View All
+          </Link>
+        }
+      />
+      <Card
+        title="Total Customers"
+        value={numberOfCustomers}
+        link={
+          <Link href="/customers" className="text-primary">
             View All
           </Link>
         }
@@ -66,7 +60,7 @@ type CardProps = {
 
 function Card({ title, value, link }: CardProps) {
   return (
-    <div className="p-6 border border-[hsl(var(--border))]">
+    <div className="p-6 border border-border rounded-md">
       <h3>
         <strong>{title}</strong>
       </h3>
