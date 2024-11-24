@@ -2,12 +2,16 @@ import '@/app/ui/global.css'
 import { lato } from './ui/fonts'
 import TopNav from './top-nav'
 import ThemeSwitcher from './theme-switcher'
+import LogoutForm from './logout-form'
+import { auth } from '../../auth'
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const session = await auth()
+
   return (
     <html lang="en">
       <body
@@ -20,7 +24,10 @@ export default function RootLayout({
           {children}
         </main>
         <footer>
-          <ThemeSwitcher />
+          <div className="fixed bottom-6 right-6 flex flex-col gap-4 items-center">
+            <ThemeSwitcher />
+            {session?.user ? <LogoutForm /> : null}
+          </div>
         </footer>
       </body>
     </html>

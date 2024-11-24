@@ -8,7 +8,7 @@ export default function Page() {
       <form
         action={async () => {
           'use server'
-          await signIn('github')
+          await signIn('github', { redirectTo: '/dashboard' })
         }}
         className="self-center"
       >
