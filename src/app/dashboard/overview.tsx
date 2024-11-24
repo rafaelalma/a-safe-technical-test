@@ -25,7 +25,7 @@ export default async function Overview() {
         title="Collected"
         value={totalPaidInvoices}
         link={
-          <Link href="/invoices?status=paid" className="text-primary">
+          <Link href="/invoices" className="text-primary">
             View All
           </Link>
         }
@@ -34,7 +34,7 @@ export default async function Overview() {
         title="Pending"
         value={totalPendingInvoices}
         link={
-          <Link href="/invoices?status=pending" className="text-primary">
+          <Link href="/invoices" className="text-primary">
             View All
           </Link>
         }
