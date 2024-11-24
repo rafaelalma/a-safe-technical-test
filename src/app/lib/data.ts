@@ -156,7 +156,11 @@ export async function fetchInvoiceById(id: string) {
 
     const invoice = data.rows[0]
 
-    return invoice
+    return {
+      ...invoice,
+      amount: formatCurrency(invoice.amount),
+      status: capitalize(invoice.status),
+    }
   } catch (error) {
     console.error('Database Error:', error)
     throw new Error('Failed to fetch invoice.')
