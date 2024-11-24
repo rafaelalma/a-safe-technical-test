@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { buttonVariants } from '@/components/ui/button'
+import { Button, buttonVariants } from '@/components/ui/button'
+import { signOut } from '../../auth'
 
 export default function Page() {
   return (
@@ -14,6 +15,15 @@ export default function Page() {
           Login
         </Link>
       </div>
+      <form
+        action={async () => {
+          'use server'
+          await signOut()
+        }}
+        className="self-center"
+      >
+        <Button type="submit">Logout</Button>
+      </form>
     </>
   )
 }
