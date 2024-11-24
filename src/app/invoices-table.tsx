@@ -6,16 +6,21 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import { fetchFilteredInvoices } from '../lib/data'
 import Link from 'next/link'
+import { fetchFilteredInvoices } from './lib/data'
 
 type Props = {
   query: string
   currentPage: number
+  limit: number
 }
 
-export default async function InvoicesTable({ query, currentPage }: Props) {
-  const invoices = await fetchFilteredInvoices(query, currentPage)
+export default async function InvoicesTable({
+  query,
+  currentPage,
+  limit,
+}: Props) {
+  const invoices = await fetchFilteredInvoices(query, currentPage, limit)
 
   return (
     <Table>

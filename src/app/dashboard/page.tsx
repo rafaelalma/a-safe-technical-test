@@ -3,6 +3,7 @@ import Overview from './overview'
 import RecentInvoices from './recent-invoices'
 import RevenueChart from './revenue-chart'
 import {
+  AllInvoicesSkeleton,
   OverviewSkeleton,
   RecentInvoicesSkeleton,
   RevenueChartSkeleton,
@@ -26,7 +27,9 @@ export default function Page() {
         <RecentInvoices />
       </Suspense>
 
-      <AllInvoices />
+      <Suspense fallback={<AllInvoicesSkeleton />}>
+        <AllInvoices />
+      </Suspense>
     </>
   )
 }

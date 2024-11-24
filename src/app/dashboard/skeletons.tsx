@@ -42,6 +42,16 @@ export function RecentInvoicesSkeleton() {
   )
 }
 
+export function AllInvoicesSkeleton() {
+  return (
+    <div className="flex flex-col gap-4">
+      <Skeleton className="w-[200px] h-[24px]" />
+      <Skeleton className="w-full h-[224.5px]" />
+      <Skeleton className="w-[179.53px] h-[36px] mx-auto" />
+    </div>
+  )
+}
+
 export function DashboardSkeleton() {
   return (
     <div className="flex flex-col gap-6">

@@ -75,54 +75,14 @@ export async function fetchRecentInvoices() {
   }
 }
 
-const ITEMS_PER_PAGE = 10
-
-export async function fetchAllInvoices(currentPage: number) {
-  const offset = (currentPage - 1) * ITEMS_PER_PAGE
-
-  try {
-    const invoices = await client.sql<InvoiceTableElementRaw>`
-      SELECT
-        invoices.id,
-        invoices.amount,
-        invoices.issued_date,
-        invoices.due_date,
-        invoices.status,
-        customers.name,
-        customers.email,
-      FROM invoices
-      JOIN customers ON invoices.customer_id = customers.id
-      ORDER BY invoices.due_date DESC
-      LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}
-    `
-
-    return invoices.rows
-  } catch (error) {
-    console.error('Database Error:', error)
-    throw new Error('Failed to fetch invoices.')
-  }
-}
-
-export async function fetchAllInvoicesPages() {
-  try {
-    const count = await client.sql`SELECT COUNT(*)
-    FROM invoices
-    JOIN customers ON invoices.customer_id = customers.id
-  `
-
-    const totalPages = Math.ceil(Number(count.rows[0].count) / ITEMS_PER_PAGE)
-    return totalPages
-  } catch (error) {
-    console.error('Database Error:', error)
-    throw new Error('Failed to fetch total number of invoices.')
-  }
-}
+// TODO: fetchFilteredInvoices and fetchFilteredInvoicesPages in the same fetch
 
 export async function fetchFilteredInvoices(
   query: string,
-  currentPage: number
+  currentPage: number,
+  limit: number
 ) {
-  const offset = (currentPage - 1) * ITEMS_PER_PAGE
+  const offset = (currentPage - 1) * limit
 
   try {
     const invoices = await client.sql<InvoiceTableElementRaw>`
@@ -144,7 +104,7 @@ export async function fetchFilteredInvoices(
         invoices.due_date::text ILIKE ${`%${query}%`} OR
         invoices.status ILIKE ${`%${query}%`}
       ORDER BY invoices.due_date DESC
-      LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}
+      LIMIT ${limit} OFFSET ${offset}
     `
 
     return invoices.rows.map((invoice) => ({
@@ -160,7 +120,7 @@ export async function fetchFilteredInvoices(
   }
 }
 
-export async function fetchFilteredInvoicesPages(query: string) {
+export async function fetchFilteredInvoicesPages(query: string, limit: number) {
   try {
     const count = await client.sql`SELECT COUNT(*)
     FROM invoices
@@ -174,7 +134,7 @@ export async function fetchFilteredInvoicesPages(query: string) {
         invoices.status ILIKE ${`%${query}%`}
   `
 
-    const totalPages = Math.ceil(Number(count.rows[0].count) / ITEMS_PER_PAGE)
+    const totalPages = Math.ceil(Number(count.rows[0].count) / limit)
     return totalPages
   } catch (error) {
     console.error('Database Error:', error)
@@ -203,7 +163,7 @@ export async function fetchInvoiceById(id: string) {
   }
 }
 
-export async function fetchCustomers() {
+export async function fetchFilteredCustomers(query: string) {
   try {
     const data = await client.sql<Customer>`
       SELECT
@@ -211,6 +171,9 @@ export async function fetchCustomers() {
         name,
         email
       FROM customers
+      WHERE
+        customers.name ILIKE ${`%${query}%`} OR
+        customers.email ILIKE ${`%${query}%`}
       ORDER BY name ASC
     `
 
