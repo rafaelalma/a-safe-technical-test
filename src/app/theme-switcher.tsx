@@ -16,7 +16,7 @@ export default function ThemeSwitcher() {
   return (
     <div className="fixed bottom-6 right-6">
       <Popover>
-        <PopoverTrigger>
+        <PopoverTrigger asChild>
           <Button variant="secondary">Customize</Button>
         </PopoverTrigger>
         <PopoverContent>
