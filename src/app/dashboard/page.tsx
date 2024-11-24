@@ -10,7 +10,16 @@ import {
 } from './skeletons'
 import AllInvoices from './all-invoices'
 
-export default function Page() {
+type Props = {
+  searchParams?: Promise<{
+    query?: string
+    page?: string
+  }>
+}
+
+export default async function Page(props: Props) {
+  const searchParams = props.searchParams
+
   return (
     <>
       <h1 className="sr-only">Dashboard</h1>
@@ -28,7 +37,7 @@ export default function Page() {
       </Suspense>
 
       <Suspense fallback={<AllInvoicesSkeleton />}>
-        <AllInvoices />
+        <AllInvoices searchParams={searchParams} />
       </Suspense>
     </>
   )
