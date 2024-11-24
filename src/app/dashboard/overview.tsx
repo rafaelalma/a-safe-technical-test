@@ -11,7 +11,7 @@ export default async function Overview() {
   } = await fetchCardData()
 
   return (
-    <section className="grid grid-cols-1 sm:grid-cols-4 gap-6">
+    <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       <Card
         title="Total Customers"
         value={numberOfCustomers}
