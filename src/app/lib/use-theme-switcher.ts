@@ -9,7 +9,12 @@ export default function useThemeSwitcher() {
   useEffect(() => {
     const htmlElement = document.documentElement
 
-    htmlElement.setAttribute('class', `${theme.color} ${theme.mode}`)
+    const previousClasses = htmlElement.getAttribute('class') ?? ''
+
+    htmlElement.setAttribute(
+      'class',
+      `${previousClasses} ${theme.color} ${theme.mode}`
+    )
 
     saveTheme(theme)
   }, [theme])

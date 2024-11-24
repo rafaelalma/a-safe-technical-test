@@ -1,7 +1,7 @@
 export default function Page() {
   return (
     <>
-      <h1 className="sr-only">Customers</h1>
+      <h1 className="sr-only">Login</h1>
     </>
   )
 }

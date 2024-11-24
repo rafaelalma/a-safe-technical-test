@@ -8,6 +8,9 @@ import {
 } from './definitions'
 import { capitalize, formatCurrency, getFormattedDate } from './utils'
 
+// TODO: validate with zod
+// TODO: fix db connection
+
 const client = await getDbClient()
 
 export async function fetchCardData() {
