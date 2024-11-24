@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
 import { fetchCardData } from '../lib/data'
 import Link from 'next/link'
+import { buttonVariants } from '@/components/ui/button'
 
 export default async function Overview() {
   const {
@@ -16,8 +17,11 @@ export default async function Overview() {
         title="Total Invoices"
         value={numberOfInvoices}
         link={
-          <Link href="/invoices" className="text-primary">
-            View All
+          <Link
+            href="/invoices"
+            className={buttonVariants({ variant: 'default' })}
+          >
+            View
           </Link>
         }
       />
@@ -25,8 +29,11 @@ export default async function Overview() {
         title="Collected"
         value={totalPaidInvoices}
         link={
-          <Link href="/invoices" className="text-primary">
-            View All
+          <Link
+            href="/invoices?status=paid"
+            className={buttonVariants({ variant: 'default' })}
+          >
+            View
           </Link>
         }
       />
@@ -34,8 +41,11 @@ export default async function Overview() {
         title="Pending"
         value={totalPendingInvoices}
         link={
-          <Link href="/invoices" className="text-primary">
-            View All
+          <Link
+            href="/invoices?status=pending"
+            className={buttonVariants({ variant: 'default' })}
+          >
+            View
           </Link>
         }
       />
@@ -43,8 +53,11 @@ export default async function Overview() {
         title="Total Customers"
         value={numberOfCustomers}
         link={
-          <Link href="/customers" className="text-primary">
-            View All
+          <Link
+            href="/customers"
+            className={buttonVariants({ variant: 'default' })}
+          >
+            View
           </Link>
         }
       />
@@ -60,7 +73,7 @@ type CardProps = {
 
 function Card({ title, value, link }: CardProps) {
   return (
-    <div className="p-6 border border-border rounded-md">
+    <div className="p-6 border border-border rounded-md flex flex-col gap-2">
       <h3>
         <strong>{title}</strong>
       </h3>

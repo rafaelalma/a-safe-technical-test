@@ -8,6 +8,7 @@ import {
 import { Label } from '@/components/ui/label'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import useThemeSwitcher from './lib/use-theme-switcher'
+import { Button } from '@/components/ui/button'
 
 export default function ThemeSwitcher() {
   const { theme, changeColor, changeMode } = useThemeSwitcher()
@@ -15,8 +16,8 @@ export default function ThemeSwitcher() {
   return (
     <div className="fixed bottom-6 right-6">
       <Popover>
-        <PopoverTrigger className="text-primary-foreground bg-primary p-2">
-          Customize
+        <PopoverTrigger>
+          <Button variant="secondary">Customize</Button>
         </PopoverTrigger>
         <PopoverContent>
           <div className="flex flex-row gap-4">
