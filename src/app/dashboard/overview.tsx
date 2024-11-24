@@ -30,7 +30,7 @@ export default async function Overview() {
         value={totalPaidInvoices}
         link={
           <Link
-            href="/invoices?status=paid"
+            href="/invoices?query=paid"
             className={buttonVariants({ variant: 'default' })}
           >
             View
@@ -42,7 +42,7 @@ export default async function Overview() {
         value={totalPendingInvoices}
         link={
           <Link
-            href="/invoices?status=pending"
+            href="/invoices?query=pending"
             className={buttonVariants({ variant: 'default' })}
           >
             View

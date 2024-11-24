@@ -2,11 +2,11 @@ import { db } from '@vercel/postgres'
 import {
   Customer,
   Invoice,
+  InvoiceTableElementRaw,
   MonthlyRevenue,
   RecentInvoiceRaw,
 } from './definitions'
-import { capitalize, formatCurrency } from './utils'
-import { format } from 'date-fns'
+import { capitalize, formatCurrency, getFormattedDate } from './utils'
 
 const client = await db.connect()
 
@@ -65,7 +65,7 @@ export async function fetchRecentInvoices() {
     const recentInvoices = data.rows.map((invoice) => ({
       ...invoice,
       amount: formatCurrency(invoice.amount),
-      due_date: format(invoice.due_date, 'dd/MM/yy'),
+      due_date: getFormattedDate(invoice.due_date),
       status: capitalize(invoice.status),
     }))
     return recentInvoices
@@ -75,12 +75,13 @@ export async function fetchRecentInvoices() {
   }
 }
 
-const ITEMS_PER_PAGE = 6
+const ITEMS_PER_PAGE = 10
+
 export async function fetchAllInvoices(currentPage: number) {
   const offset = (currentPage - 1) * ITEMS_PER_PAGE
 
   try {
-    const invoices = await client.sql<Invoice>`
+    const invoices = await client.sql<InvoiceTableElementRaw>`
       SELECT
         invoices.id,
         invoices.amount,
@@ -101,6 +102,49 @@ export async function fetchAllInvoices(currentPage: number) {
     throw new Error('Failed to fetch invoices.')
   }
 }
+
+export async function fetchFilteredInvoices(
+  query: string,
+  currentPage: number
+) {
+  const offset = (currentPage - 1) * ITEMS_PER_PAGE
+
+  try {
+    const invoices = await client.sql<InvoiceTableElementRaw>`
+      SELECT
+        invoices.id,
+        invoices.amount,
+        invoices.issued_date,
+        invoices.due_date,
+        invoices.status,
+        customers.name,
+        customers.email
+      FROM invoices
+      JOIN customers ON invoices.customer_id = customers.id
+      WHERE
+        customers.name ILIKE ${`%${query}%`} OR
+        customers.email ILIKE ${`%${query}%`} OR
+        invoices.amount::text ILIKE ${`%${query}%`} OR
+        invoices.issued_date::text ILIKE ${`%${query}%`} OR
+        invoices.due_date::text ILIKE ${`%${query}%`} OR
+        invoices.status ILIKE ${`%${query}%`}
+      ORDER BY invoices.due_date DESC
+      LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}
+    `
+
+    return invoices.rows.map((invoice) => ({
+      ...invoice,
+      amount: formatCurrency(invoice.amount),
+      due_date: getFormattedDate(invoice.due_date),
+      issued_date: getFormattedDate(invoice.issued_date),
+      status: capitalize(invoice.status),
+    }))
+  } catch (error) {
+    console.error('Database Error:', error)
+    throw new Error('Failed to fetch invoices.')
+  }
+}
+
 export async function fetchInvoicesPages() {
   try {
     const count = await client.sql`SELECT COUNT(*)

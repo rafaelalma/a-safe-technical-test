@@ -26,14 +26,23 @@ export const InvoiceSchema = z.object({
 })
 
 export type RecentInvoice = z.infer<typeof RecentInvoiceSchema>
-export type RecentInvoiceRaw = Omit<
-  RecentInvoice,
-  'amount' | 'due_date' | 'issued_date'
-> & {
+export type RecentInvoiceRaw = Omit<RecentInvoice, 'amount' | 'issued_date'> & {
   amount: number
-  due_date: string
 }
 export const RecentInvoiceSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  amount: z.number(),
+  due_date: z.string(),
+  issued_date: z.string(),
+  status: z.enum(['pending', 'paid']),
+})
+
+export type InvoiceTableElement = z.infer<typeof InvoiceTableElementSchema>
+export type InvoiceTableElementRaw = Omit<RecentInvoice, 'amount'> & {
+  amount: number
+}
+export const InvoiceTableElementSchema = z.object({
   id: z.string(),
   name: z.string(),
   amount: z.number(),
