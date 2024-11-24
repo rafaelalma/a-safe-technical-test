@@ -21,7 +21,7 @@ export default async function AllInvoices(props: Props) {
   return (
     <section className="flex flex-col gap-4">
       <h2>
-        <Link href="/invoices" className="text-primary">
+        <Link href="/invoices" prefetch className="text-primary">
           All Invoices
         </Link>
       </h2>

@@ -27,6 +27,7 @@ export default function NavLinks() {
           <li key={link.name}>
             <Link
               href={link.href}
+              prefetch
               className={clsx('p-2 block text-inherit', {
                 'border-b-2 border-primary-foreground': pathname.startsWith(
                   link.href

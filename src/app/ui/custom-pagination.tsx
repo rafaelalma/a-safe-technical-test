@@ -34,6 +34,8 @@ export default function CustomPagination({ totalPages }: Props) {
         <PaginationItem>
           <PaginationPrevious
             href={createPageURL(currentPage - 1)}
+            prefetch
+            scroll={false}
             className={
               previousIsDisabled ? 'pointer-events-none text-muted' : ''
             }
@@ -44,6 +46,8 @@ export default function CustomPagination({ totalPages }: Props) {
         <PaginationItem>
           <PaginationNext
             href={createPageURL(currentPage + 1)}
+            prefetch
+            scroll={false}
             className={nextIsDisabled ? 'pointer-events-none text-muted' : ''}
             aria-disabled={nextIsDisabled}
             tabIndex={nextIsDisabled ? -1 : undefined}

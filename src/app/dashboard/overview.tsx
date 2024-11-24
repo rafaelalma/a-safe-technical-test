@@ -19,6 +19,7 @@ export default async function Overview() {
         link={
           <Link
             href="/invoices"
+            prefetch
             className={buttonVariants({ variant: 'default' })}
           >
             View
@@ -31,6 +32,7 @@ export default async function Overview() {
         link={
           <Link
             href="/invoices?query=paid"
+            prefetch
             className={buttonVariants({ variant: 'default' })}
           >
             View
@@ -43,6 +45,7 @@ export default async function Overview() {
         link={
           <Link
             href="/invoices?query=pending"
+            prefetch
             className={buttonVariants({ variant: 'default' })}
           >
             View
