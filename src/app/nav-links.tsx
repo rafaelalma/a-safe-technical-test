@@ -29,7 +29,7 @@ export default function NavLinks() {
               href={link.href}
               className={clsx('p-2 block rounded-[var(--radius)]', {
                 'bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))]':
-                  pathname === link.href,
+                  pathname.startsWith(link.href),
               })}
             >
               <p>{link.name}</p>
