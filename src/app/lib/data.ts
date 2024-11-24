@@ -1,4 +1,4 @@
-import { db } from '@vercel/postgres'
+import { getDbClient } from './db'
 import {
   Customer,
   Invoice,
@@ -8,7 +8,7 @@ import {
 } from './definitions'
 import { capitalize, formatCurrency, getFormattedDate } from './utils'
 
-const client = await db.connect()
+const client = await getDbClient()
 
 export async function fetchCardData() {
   try {
