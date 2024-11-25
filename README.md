@@ -1,5 +1,27 @@
 # A Safe Technical Test
 
+## Documentation
+
+### Project initialisation
+
+_npm run dev_
+
+### Authentication
+
+- Through Github
+- With credentials: rafaelalma92@gmail.com / unsafe-password
+
+### Folder structure
+
+- **/src/app/lib** for type definitions, data fetching and utility functions
+- **/src/app/ui** for custom reusable components
+- **/src/components** for _shadcnui_ reusable components
+- Collocation of components by route
+
+### Architecture
+
+React Server Components with _streaming_
+
 ## Authentication with Next.js
 
 DONE
@@ -70,16 +92,3 @@ TODO
 - Unit testing with Vitest
 - Component testing with React Testing Library
 - E2E testing with Cypress or Playwright
-
-## Documentation
-
-### Folder structure
-
-- **/src/app/lib** for type definitions, data fetching and utility functions
-- **/src/app/ui** for custom reusable components
-- **/src/components** for _shadcnui_ reusable components
-- Collocation of components by route
-
-### Architecture
-
-React Server Components with _streaming_
