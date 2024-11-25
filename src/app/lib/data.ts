@@ -170,18 +170,25 @@ export async function fetchInvoiceById(id: string) {
   }
 }
 
-export async function fetchFilteredCustomers(query: string) {
+export async function fetchFilteredCustomers(
+  query: string,
+  currentPage: number,
+  limit: number
+) {
+  const offset = (currentPage - 1) * limit
+
   try {
     const data = await client.sql<Customer>`
       SELECT
-        id,
-        name,
-        email
+        customers.id,
+        customers.name,
+        customers.email
       FROM customers
       WHERE
         customers.name ILIKE ${`%${query}%`} OR
         customers.email ILIKE ${`%${query}%`}
       ORDER BY name ASC
+      LIMIT ${limit} OFFSET ${offset}
     `
 
     const customers = data.rows
@@ -189,5 +196,45 @@ export async function fetchFilteredCustomers(query: string) {
   } catch (err) {
     console.error('Database Error:', err)
     throw new Error('Failed to fetch all customers.')
+  }
+}
+
+export async function fetchFilteredCustomersPages(
+  query: string,
+  limit: number
+) {
+  try {
+    const count = await client.sql`SELECT COUNT(*)
+    FROM customers
+      WHERE
+        customers.name ILIKE ${`%${query}%`} OR
+        customers.email ILIKE ${`%${query}%`}
+  `
+
+    const totalPages = Math.ceil(Number(count.rows[0].count) / limit)
+    return totalPages
+  } catch (error) {
+    console.error('Database Error:', error)
+    throw new Error('Failed to fetch total number of invoices.')
+  }
+}
+
+export async function fetchCustomerById(id: string) {
+  try {
+    const data = await client.sql<Customer>`
+      SELECT
+        customers.id,
+        customers.name,
+        customers.email
+      FROM customers
+      WHERE customers.id = ${id};
+    `
+
+    const customer = data.rows[0]
+
+    return customer
+  } catch (error) {
+    console.error('Database Error:', error)
+    throw new Error('Failed to fetch invoice.')
   }
 }
