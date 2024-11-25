@@ -11,7 +11,7 @@ export default function Page() {
           prefetch
           className={buttonVariants({ variant: 'default' })}
         >
-          Login
+          Please log in if you want to use the dashboard
         </Link>
       </div>
     </>
