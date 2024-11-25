@@ -1,12 +1,12 @@
 # A Safe Technical Test
 
-## Documentation
+## Documentation
 
 ### Project initialisation
 
 _npm run dev_
 
-### Authentication
+### Authentication
 
 - Through Github
 - With credentials: rafaelalma92@gmail.com / unsafe-password
@@ -36,7 +36,7 @@ TODO
 - With Google provider
 - Secure routes through middleware
 
-## Component development
+## Component development
 
 DONE
 
@@ -49,7 +49,7 @@ TODO
 
 - **use-theme-switcher.ts** with _useSyncExternalStorage_
 
-## Dashboard generation
+## Dashboard generation
 
 DONE
 
@@ -61,7 +61,7 @@ TODO
 - Improve design
 - Improve graph. Learn more about [D3.js](https://d3js.org/)
 
-## Large Data Set Handling
+## Large Data Set Handling
 
 DONE
 
@@ -85,7 +85,7 @@ TODO
 - [Prefetching links in Middleware](https://nextjs.org/docs/app/api-reference/components/link#prefetching-links-in-middleware)
 - Optimise queries
 
-## Testing
+## Testing
 
 TODO
 
