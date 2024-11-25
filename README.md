@@ -1,5 +1,7 @@
 # A Safe Technical Test
 
+With _Typescript and TailwindCSS_
+
 ## Documentation
 
 ### Project initialisation
