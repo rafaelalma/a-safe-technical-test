@@ -48,6 +48,7 @@ DONE
 TODO
 
 - **use-theme-switcher.ts** with _useSyncExternalStorage_
+- Fix FOUC with Client Hints
 
 ## Dashboard generation
 
