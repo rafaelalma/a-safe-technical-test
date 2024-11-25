@@ -10,6 +10,11 @@ import {
 } from './skeletons'
 import AllInvoices from './all-invoices'
 import { requireAuth } from '../lib/utils'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Dashboard',
+}
 
 type Props = {
   searchParams?: Promise<{

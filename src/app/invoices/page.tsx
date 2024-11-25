@@ -5,6 +5,11 @@ import { InvoicesTableSkeleton } from './skeletons'
 import CustomPagination from '../ui/custom-pagination'
 import InvoicesTable from '../invoices-table'
 import { requireAuth } from '../lib/utils'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Invoices',
+}
 
 type Props = {
   searchParams?: Promise<{

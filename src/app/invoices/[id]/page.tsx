@@ -1,6 +1,11 @@
 import { fetchInvoiceById } from '@/app/lib/data'
 import { requireAuth } from '@/app/lib/utils'
 import { notFound } from 'next/navigation'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Invoice',
+}
 
 type Props = { params: Promise<{ id: string }> }
 

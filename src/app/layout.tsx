@@ -4,6 +4,17 @@ import TopNav from './top-nav'
 import ThemeSwitcher from './theme-switcher'
 import LogoutForm from './logout-form'
 import { auth } from '../../auth'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: {
+    template: '%s | A Safe Technical Test',
+    default: 'A Safe Technical Test',
+  },
+  description:
+    'Technical Test: React Developer with Next.js, TypeScript and Tailwind CSS',
+  metadataBase: new URL('https://github.com/rafaelalma/a-safe-technical-test'),
+}
 
 export default async function RootLayout({
   children,
