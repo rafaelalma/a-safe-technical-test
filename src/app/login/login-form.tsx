@@ -21,7 +21,7 @@ export default function LoginForm() {
             </label>
             <div className="relative">
               <input
-                className="block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-background outline-2 placeholder:text-background"
+                className="block w-full rounded-md border border-border py-[9px] pl-10 text-foreground outline-2 placeholder:text-background bg-background"
                 id="email"
                 type="email"
                 name="email"
@@ -40,7 +40,7 @@ export default function LoginForm() {
             </label>
             <div className="relative">
               <input
-                className="block w-full rounded-md border text-background border-gray-200 py-[9px] pl-10 outline-2 placeholder:text-background"
+                className="block w-full rounded-md border text-foreground border-border py-[9px] pl-10 outline-2 placeholder:text-background bg-background"
                 id="password"
                 type="password"
                 name="password"
