@@ -12,21 +12,16 @@ export default function LoginForm() {
 
   return (
     <form action={formAction} className="space-y-3">
-      <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8">
-        <h1 className="mb-3 text-2xl text-background">
-          Please log in to continue.
-        </h1>
+      <div className="flex-1 rounded-lg bg-background px-6 pb-4 pt-8">
+        <h1 className="mb-3 text-foreground">Please log in to continue.</h1>
         <div className="w-full">
           <div>
-            <label
-              className="mb-3 mt-5 block text-xs font-medium text-gray-900"
-              htmlFor="email"
-            >
+            <label className="mb-3 mt-5 block text-foreground" htmlFor="email">
               Email
             </label>
             <div className="relative">
               <input
-                className="block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm text-background outline-2 placeholder:text-gray-500"
+                className="block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-background outline-2 placeholder:text-background"
                 id="email"
                 type="email"
                 name="email"
@@ -38,14 +33,14 @@ export default function LoginForm() {
           </div>
           <div className="mt-4">
             <label
-              className="mb-3 mt-5 block text-xs font-medium text-gray-900"
+              className="mb-3 mt-5 block text-foreground"
               htmlFor="password"
             >
               Password
             </label>
             <div className="relative">
               <input
-                className="block w-full rounded-md border text-background border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                className="block w-full rounded-md border text-background border-gray-200 py-[9px] pl-10 outline-2 placeholder:text-background"
                 id="password"
                 type="password"
                 name="password"
@@ -68,7 +63,7 @@ export default function LoginForm() {
         >
           {errorMessage && (
             <>
-              <p className="text-sm text-red-500">{errorMessage}</p>
+              <p className="text-destructive">{errorMessage}</p>
             </>
           )}
         </div>
