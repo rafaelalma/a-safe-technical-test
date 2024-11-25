@@ -1,4 +1,3 @@
-// TODO: fix types
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 'use client'

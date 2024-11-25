@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react'
 import { z } from 'zod'
 
-// TODO: useSyncExternal storage with local storage to get and set theme
-
 export default function useThemeSwitcher() {
   const [theme, setTheme] = useState<Theme>(retrieveTheme())
 

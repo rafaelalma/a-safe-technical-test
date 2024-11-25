@@ -8,9 +8,6 @@ import {
 } from './definitions'
 import { capitalize, formatCurrency, getFormattedDate } from './utils'
 
-// TODO: validate with zod
-// TODO: fix db connection
-
 const client = await getDbClient()
 
 export async function fetchCardData() {
@@ -77,8 +74,6 @@ export async function fetchRecentInvoices() {
     throw new Error('Failed to fetch the latest invoices.')
   }
 }
-
-// TODO: fetchFilteredInvoices and fetchFilteredInvoicesPages in the same fetch
 
 export async function fetchFilteredInvoices(
   query: string,
