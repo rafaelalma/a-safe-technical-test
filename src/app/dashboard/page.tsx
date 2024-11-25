@@ -9,6 +9,7 @@ import {
   RevenueChartSkeleton,
 } from './skeletons'
 import AllInvoices from './all-invoices'
+import { requireAuth } from '../lib/utils'
 
 type Props = {
   searchParams?: Promise<{
@@ -18,6 +19,8 @@ type Props = {
 }
 
 export default async function Page(props: Props) {
+  await requireAuth()
+
   const searchParams = props.searchParams
 
   return (

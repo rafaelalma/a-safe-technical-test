@@ -1,9 +1,12 @@
 import { fetchInvoiceById } from '@/app/lib/data'
+import { requireAuth } from '@/app/lib/utils'
 import { notFound } from 'next/navigation'
 
 type Props = { params: Promise<{ id: string }> }
 
 export default async function Page(props: Props) {
+  await requireAuth()
+
   const params = await props.params
   const id = params.id
 

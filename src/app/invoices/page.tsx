@@ -4,6 +4,7 @@ import Search from '../ui/search'
 import { InvoicesTableSkeleton } from './skeletons'
 import CustomPagination from '../ui/custom-pagination'
 import InvoicesTable from '../invoices-table'
+import { requireAuth } from '../lib/utils'
 
 type Props = {
   searchParams?: Promise<{
@@ -15,6 +16,8 @@ type Props = {
 const LIMIT = 10
 
 export default async function Page(props: Props) {
+  await requireAuth()
+
   const searchParams = await props.searchParams
   const query = searchParams?.query || ''
   const currentPage = Number(searchParams?.page) || 1
